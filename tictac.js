@@ -56,7 +56,10 @@ function makebotmove() {
     let highidx = 0
     let highnum = -11
     movescores.forEach((v, i) => {
-        if (v >= highnum) {
+        if (v > highnum) {
+            highnum = v
+            highidx = i
+        } else if (v == highnum && Math.random() > 0.5) {
             highnum = v
             highidx = i
         }
