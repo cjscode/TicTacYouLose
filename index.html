@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacYouLose</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.addEventListener("error",(e)=>{
+            alert(`An error has occured: ${e.message}`)
+        })
+    </script>
+</head>
+<body>
+    <h1 id="title">Tic Tac You Lose</h1>
+    <p id="wl">Wins: 0 - Losses: 0</p>
+    <div id="main">
+        <span class="spot" id="spot0"></span>
+        <span class="spot" id="spot1"></span>
+        <span class="spot" id="spot2"></span>
+        <span class="spot" id="spot3"></span>
+        <span class="spot" id="spot4"></span>
+        <span class="spot" id="spot5"></span>
+        <span class="spot" id="spot6"></span>
+        <span class="spot" id="spot7"></span>
+        <span class="spot" id="spot8"></span>
+    </div>
+    <script src="tictac.js"></script>   
+</body>
+</html>

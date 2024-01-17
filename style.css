@@ -1,0 +1,45 @@
+body, head, html {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#title {
+    font-size: 5vmin;
+    text-align: center;
+}
+#main {
+    width: 85vmin;
+    height: 85vmin;
+    translate: 5vmin 0;
+    border-radius: 1vmin;
+    padding: 0px;
+    margin: 0px;
+}
+#wl {
+    text-align: center;
+    font-size: 2.5vmin;
+    padding: 0px;
+    margin: 0px;
+}
+.spot {
+    padding: 0px;
+    margin: 0px;
+    border: 1vmin solid rgb(75,75,75);
+    width: 26.33vmin;
+    height: 26.33vmin;
+    border-radius: 1vmin;
+    display: inline-block;
+    float: left;
+}
+.white {
+    background-color: rgb(255,255,255);
+}
+.black {
+    background-color: rgb(0,0,0);
+}
+.spot:not(.white,.black) {
+    background-color: rgb(127,127,127);
+}
