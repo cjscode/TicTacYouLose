@@ -22,48 +22,50 @@ function winning(current) {
     }
     return 0
 }
-function minimax (current) {
-    current = current.slice(0,8)
-    let scores = [0,0,0,0,0,0,0,0,0]
-    current.forEach((v,i)=>{
-        if (v == 0) {
-            current[i] = 2
-            if (winning(current) == 2) {
-                scores[i] += 100
-            } else {
-                console.log(current)
-                current.forEach((v,i)=>{
-                    if (v == 0) {
-                        current[i] = 1
-                        if (winning(current) == 1) {
-                            scores[i] += 10
-                        }
-                        current[i] = 0
-                    }
-                })
+function returnbotmovescore(current, movespot) {
+    current[movespot] = 2
+    let movescore = 0
+    for (let i = 0; i < 9; i++) {
+        if (current[i] == 0) {
+            current[i] = 1
+            let check = winning(current)
+            if (check == 1) {
+                movescore -= 10
+            } else if (check == 2) {
+                movescore += 10
             }
             current[i] = 0
         }
-    })
-    console.log(scores)
-    return scores
-}
-function gethighindex (arr) {
-    let highnum = -Infinity
-    let highindex = 0
-    arr.forEach((v,i)=>{
-        if (v >= highnum) {
-            highnum = v
-            highindex = i
-        }
-    })
-    return highindex
+    }
+    current[movespot] = 0
+    return movescore
 }
 function makebotmove() {
-    iterations += 1 
-    let highestidx = gethighindex(minimax(board))
-    document.querySelector(`#spot${highestidx}`).classList.add("black")
-    board[highestidx] = 2
+    iterations += 1
+    if (board[4] == 0) {
+        board[4] = 2
+        document.querySelector("#spot4").classList.add("black")
+        return
+    }
+    let movescores = []
+    for (let i = 0; i < 9; i++) {
+        if (board[i] == 0) {
+            movescores[i] = returnbotmovescore(board, i)
+        }
+    }
+    let highidx = 0
+    let highnum = -11
+    movescores.forEach((v, i) => {
+        if (v > highnum) {
+            highnum = v
+            highidx = i
+        } else if (v == highnum && Math.random() > 0.5) {
+            highnum = v
+            highidx = i
+        }
+    })
+    board[highidx] = 2
+    document.querySelector(`#spot${highidx}`).classList.add("black")
 }
 function reset() {
     localStorage.setItem("_W",wins)
